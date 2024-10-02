@@ -19,7 +19,7 @@ console.log("MyName" + myName);
 console.log("MyAge" + myAge);
 
 // var person2 = new Person();
-// person2.setId(2);
+// person2.setId(2);1
 // person2.setName("Quang");
 // person2.setAddress("HaNoi");
 

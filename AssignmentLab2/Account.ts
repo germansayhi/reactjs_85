@@ -10,7 +10,15 @@ export class Account {
     private position: Position;
     private createdDate: Date;
 
-    constructor(id: number, email: string, username: string, fullname: string, department: Department, position: Position, createdDate: Date) {
+    constructor(
+        id: number,
+        email: string,
+        username: string,
+        fullname: string,
+        department: Department,
+        position: Position,
+        createdDate: Date
+    ) {
         this.id = id;
         this.email = email;
         this.username = username;
@@ -131,19 +139,14 @@ export class Account {
     public setCreatedDate(value: Date) {
         this.createdDate = value;
     }
-
 }
 export function showInfoAccount(account: Account): void {
     console.log(`Thông tin tài khoản:
 ID: ${account.getId()}
-Email: ${account.getEmail()}
 Username: ${account.getUsername()}
+Email: ${account.getEmail()}
 Fullname: ${account.getFullname()}
 Phòng ban: ${account.getDepartmnt().getName()}
 Vị trí: ${account.getPosition().getName()}
 Ngày tạo: ${account.getCreatedDate().toLocaleDateString()}`);
 }
-
-
-
-

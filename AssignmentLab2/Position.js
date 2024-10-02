@@ -36,7 +36,7 @@ var Position = /** @class */ (function () {
         this.name = value;
     };
     Position.prototype.toString = function () {
-        return "ID: ".concat(this.id, ", Name: ").concat(this.name);
+        return "\n        ID: ".concat(this.id, ", \n        Name: ").concat(this.name);
     };
     return Position;
 }());

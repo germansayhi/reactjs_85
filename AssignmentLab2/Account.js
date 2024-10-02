@@ -114,5 +114,5 @@ var Account = /** @class */ (function () {
 }());
 exports.Account = Account;
 function showInfoAccount(account) {
-    console.log("Th\u00F4ng tin t\u00E0i kho\u1EA3n:\nID: ".concat(account.getId(), "\nEmail: ").concat(account.getEmail(), "\nUsername: ").concat(account.getUsername(), "\nFullname: ").concat(account.getFullname(), "\nPh\u00F2ng ban: ").concat(account.getDepartmnt().getName(), "\nV\u1ECB tr\u00ED: ").concat(account.getPosition().getName(), "\nNg\u00E0y t\u1EA1o: ").concat(account.getCreatedDate().toLocaleDateString()));
+    console.log("Th\u00F4ng tin t\u00E0i kho\u1EA3n:\nID: ".concat(account.getId(), "\nUsername: ").concat(account.getUsername(), "\nEmail: ").concat(account.getEmail(), "\nFullname: ").concat(account.getFullname(), "\nPh\u00F2ng ban: ").concat(account.getDepartmnt().getName(), "\nV\u1ECB tr\u00ED: ").concat(account.getPosition().getName(), "\nNg\u00E0y t\u1EA1o: ").concat(account.getCreatedDate().toLocaleDateString()));
 }

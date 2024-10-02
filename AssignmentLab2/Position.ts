@@ -39,9 +39,11 @@ export class Position {
         this.name = value;
     }
     public toString(): string {
-        return `ID: ${this.id}, Name: ${this.name}`;
+        return `
+        ID: ${this.id}, 
+        Name: ${this.name}`;
     }
 }
 export function showInfoPosition(position: Position): void {
-    console.log(`Thông tin chức vụ: ${position.toString()}`)
+    console.log(`Thông tin chức vụ: ${position.toString()}`);
 }
