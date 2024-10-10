@@ -77,15 +77,17 @@ class App extends Component {
 
   //
   render() {
+    let dataTopChild = "data_param_Top_Child";
     return (
       <div className="container">
         <TopComponents
-          dataFromAppToTopProps={this.dataFromAppToTop}
-          x="daonq"
-          y="VTI"
+          // dataFromAppToTopProps={this.dataFromAppToTop}
+          // x="daonq"
+          // y="VTI"
           student={this.student}
           headingTop={this.headingTop}
           getDataFromTop={this.getDataFromTop}
+          dataTopChild={dataTopChild}
         />
         <BottomComponents
           myClass="Railway 85"

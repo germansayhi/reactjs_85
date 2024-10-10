@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import TopChildComponents from "./TopChildComponents";
 
 class TopComponents extends Component {
     // Contrutor là hàm được khai báo đầu tiên trong class Components
@@ -8,7 +9,15 @@ class TopComponents extends Component {
     //         click_number: 0,
     //     };
     // }
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: "",
+        };
+    }
     handleSenData = () => {
+        console.log("Bạn vừa nhập vào ô input dữ liệu là: ", this.state.data);
+
         let dataFromApp = ".....Dữ liệu từ Top xuống Bottom...";
         this.props.getDataFromTop(dataFromApp);
         // this.setState({
@@ -16,9 +25,20 @@ class TopComponents extends Component {
         // });
 
     };
+    // Khai bao ham handleChange 
+    handleChange = (event) => {
+        console.log("event: ", event.target.value);
+        // event.target.value;
+        this.setState({
+            data: event.target.value,
+
+        });
+        // console.log("data", this.state.data);
+
+    };
     render() {
         //Destructuring 
-        let { dataFromAppToTopProps, x, y, headingTop } = this.props
+        let { dataFromAppToTopProps, x, y, headingTop, dataTopChild } = this.props
         // console.log("v_dataFromAppToTopProps" + dataFromAppToTopProps);
         // console.log("x: " + x);
         // console.log("y: " + y);
@@ -36,9 +56,15 @@ class TopComponents extends Component {
                             <div className="panel-body">
                                 <div className="row">
                                     <div className="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                                        <input type="text" className="form-control" /*</div>value={this.state.click_number}*/></input>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            /*</div>value={this.state.click_number}*/
+                                            value={this.state.data}
+                                            onChange={this.handleChange}
+                                        ></input>
                                     </div>
-                                    <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                                    <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                                         <button type="button" className="btn btn-primary" onClick={this.handleSenData}>
                                             Sent Data
                                         </button>
@@ -47,6 +73,9 @@ class TopComponents extends Component {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div>
+                    <TopChildComponents dataTopChild={dataTopChild} />
                 </div>
             </>
         );
