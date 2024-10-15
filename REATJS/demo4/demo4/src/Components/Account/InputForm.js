@@ -5,9 +5,9 @@ function InputForm(props) {
     return (
         <>
             <FormGroup>
-                <Label for="exampleEmail">Email</Label>
+                <Label for="Email">Email</Label>
                 <Input
-                    id="exampleEmail"
+                    id="Email"
                     name="email"
                     placeholder="Input Email"
                     type="email"
@@ -15,9 +15,9 @@ function InputForm(props) {
             </FormGroup>
 
             <FormGroup>
-                <Label for="exampleUsername">Username</Label>
+                <Label for="Username">Username</Label>
                 <Input
-                    id="exampleUsername"
+                    id="Username"
                     name="email"
                     placeholder="Input Username"
                     type="text"
@@ -25,9 +25,9 @@ function InputForm(props) {
             </FormGroup>
 
             <FormGroup>
-                <Label for="exampleFullname">Fullname</Label>
+                <Label for="Fullname">Fullname</Label>
                 <Input
-                    id="exampleFullname"
+                    id="Fullname"
                     name="email"
                     placeholder="Input Fullname"
                     type="text"
