@@ -25,7 +25,7 @@ function InputForm(props) {
             fullname: Fullname,
             department: Department,
             position: Position,
-            createDate: 11 / 11 / 2024,
+            createDate: "2021/11/20",
         };
         onHandleCreateNewAccount(accountNew);
     };
