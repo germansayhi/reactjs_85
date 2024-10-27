@@ -5,6 +5,8 @@ import InputForm from "./InputForm";
 function ModalCreateNewAccount(props) {
     let { onHandleCreateNewAccount } = props;
     let { showForm, onHandleCloseForm } = props;
+    let { listDepartment } = props
+    let { listPosition } = props
     return (
         <>
             <Modal isOpen={showForm}>
@@ -12,7 +14,10 @@ function ModalCreateNewAccount(props) {
                     <h3>Create New Account</h3>
                 </ModalHeader>
                 <ModalBody>
-                    <InputForm onHandleCreateNewAccount={onHandleCreateNewAccount} />
+                    <InputForm onHandleCreateNewAccount={onHandleCreateNewAccount}
+                        listDepartment={listDepartment}
+                        listPosition={listPosition}
+                    />
                 </ModalBody>
                 <ModalFooter>
                     <Button color="danger" onClick={onHandleCloseForm}>

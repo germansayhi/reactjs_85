@@ -1,0 +1,1 @@
+export const ADD_NEW_ACCOUNT = "ADD_NEW_ACCOUNT"

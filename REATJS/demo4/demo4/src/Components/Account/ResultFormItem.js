@@ -7,7 +7,7 @@ function ResultFormItem(props) {
     let items = listAccount.map((account, index) => {
         return (
             <tr >
-                <th scope="row"> {index + 1} </th>
+                <th scope="row"> {account.id} </th>
                 <td> {account.email} </td>
                 <td> {account.username} </td>
                 <td> {account.fullname} </td>

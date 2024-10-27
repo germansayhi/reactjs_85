@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FormGroup, Label, Input, Button } from "reactstrap";
 
 function InputForm(props) {
-    let { onHandleCreateNewAccount } = props;
+    let { onHandleCreateNewAccount, listDepartment, listPosition } = props;
 
     // khai báo State lưu trữ giá tri của ô nhâp liệu
     let [Email, setEmail] = useState("");
@@ -12,20 +12,23 @@ function InputForm(props) {
     let [Position, setPosition] = useState("");
 
     //
+    let departmentItems = listDepartment.map((dep) => {
+        return <option value={dep.id}>{dep.name}</option>;
+    })
+
+    let positionItems = listPosition.map((pos) => {
+        return <option value={pos.id}>{pos.name}</option>;
+    })
+
+
     let handleCreate = () => {
-        // console.log("Email", Email);
-        // console.log("Username", Username);
-        // console.log("Fullname", Fullname);
-        // console.log("Department", Department);
-        // console.log("Position", Position);
         let accountNew = {
-            id: 1,
             email: Email,
             username: Username,
             fullname: Fullname,
-            department: Department,
-            position: Position,
-            createDate: "2021/11/20",
+            departmentId: Department,
+            positionId: Position,
+            createDate: new Date()
         };
         onHandleCreateNewAccount(accountNew);
     };
@@ -84,11 +87,7 @@ function InputForm(props) {
                         setDepartment(event.target.value);
                     }}
                 >
-                    <option>Giám Đốc</option>
-                    <option>Bảo vệ</option>
-                    <option>Nhân viên</option>
-                    <option>Quản Lí</option>
-                    <option>Kế Toán</option>
+                    {departmentItems}
                 </Input>
             </FormGroup>
 
@@ -103,11 +102,7 @@ function InputForm(props) {
                         setPosition(event.target.value);
                     }}
                 >
-                    <option>Tester</option>
-                    <option>Dev</option>
-                    <option>Scrum Master</option>
-                    <option>Manager</option>
-                    <option>Staff</option>
+                    {positionItems}
                 </Input>
             </FormGroup>
 
