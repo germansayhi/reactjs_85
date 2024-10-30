@@ -1,3 +1,5 @@
 import { createStore } from "redux";
-let storeRedux = createStore(reducer);
+import { RootReducer } from "../Reduces/rootReducer";
+
+let storeRedux = createStore(RootReducer);
 export { storeRedux }

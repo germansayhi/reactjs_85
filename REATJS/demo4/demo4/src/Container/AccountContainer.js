@@ -1,70 +1,46 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import CreateButton from "../Components/Account/CreateButton";
 import ResultForm from "../Components/Account/ResultForm";
 import ModalCreateNewAccount from "../Components/Account/ModalCreateNewAccount";
-import { addNewAccountApi, getListAccountApi } from "../API/AccountApi";
-import { getListPositionApi } from "../API/PositionApi";
-import { getListDepartmentApi } from "../API/DepartmentApi";
+import { useDispatch } from "react-redux";
+import { actionCloseInputForm, actionShowInputForm } from "../Redux/Action/FormAction";
+import { actionFetchListAccountAPI, actionAddAccountAPI } from "../Redux/Action/AccountAction";
+import { actionFetchListDepartmentAPI } from "../Redux/Action/DepartmentAction";
+import { actionFetchListPositionAPI } from "../Redux/Action/PositionAction";
 
 function AccountContainer(props) {
-    // Khai báo 1 state để qản lí viêc ẩn hiên của modal
-    let [showForm, setShowForm] = useState(false);
 
-    // Khai báo State để quản lí danh sách Account trên hê thống
-    let [listAccount, setListAccount] = useState([]);
-    let [listDepartment, setListDepartment] = useState([]);
-    let [listPosition, setListPosition] = useState([]);
+    let dispatchRedux = useDispatch();
 
     // khai báo hàm callback
     let onHandleCreateButton = () => {
-        // console.log("Hàm onHandleClickButton");
-        setShowForm(true);
+        dispatchRedux(actionShowInputForm());
     };
     let onHandleCloseForm = () => {
-        setShowForm(false);
+        dispatchRedux(actionCloseInputForm()); //
     };
 
     // khai báo hàm callback xử lí khi người dùng khai báo hàm Create New Account
     let onHandleCreateNewAccount = (account_New) => {
-        addNewAccountApi(account_New).then((res) => {
-            fetchAccounts();
-        })
-        setShowForm(false);
-    };
-    let fetchListPosition = () => {
-        getListPositionApi().then((response) => {
-            setListPosition(response);
-        });
-    };
-
-    let fetchDepartments = () => {
-        getListDepartmentApi().then((response) => {
-            setListDepartment(response);
-        });
-    };
-    let fetchAccounts = () => {
-        getListAccountApi().then((response) => {
-            setListAccount(response);
-        });
-    };
+        dispatchRedux(actionAddAccountAPI(account_New));
+        dispatchRedux(actionCloseInputForm());
+    }
     useEffect(() => {
         // Load dữ liệu từ db
-        fetchAccounts();
-        fetchDepartments();
-        fetchListPosition();
+        dispatchRedux(actionFetchListAccountAPI());
+        dispatchRedux(actionFetchListDepartmentAPI());
+        dispatchRedux(actionFetchListPositionAPI());
     }, []);
     return (
         <div>
             <CreateButton onHandleCreateButton={onHandleCreateButton} />
             <ModalCreateNewAccount
-                showForm={showForm}
+
                 onHandleCloseForm={onHandleCloseForm}
                 // truyền hàm callback vào ModalCreateNewAccount để xử lí khi người dùng khai báo hàm Create New Account
                 onHandleCreateNewAccount={onHandleCreateNewAccount}
-                listDepartment={listDepartment}
-                listPosition={listPosition}
             />
-            <ResultForm listAccount={listAccount} />
+            <ResultForm />
         </div>
     );
 }

@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { FormGroup, Label, Input, Button } from "reactstrap";
+import { useSelector } from "react-redux";
 
 function InputForm(props) {
-    let { onHandleCreateNewAccount, listDepartment, listPosition } = props;
+    let { onHandleCreateNewAccount } = props;
+
+    let stateRedux = useSelector((state) => state)
+    let listDepartment = stateRedux.listDepartment;
+    let listPosition = stateRedux.listPosition;
+
 
     // khai báo State lưu trữ giá tri của ô nhâp liệu
     let [Email, setEmail] = useState("");
@@ -106,10 +112,10 @@ function InputForm(props) {
                 </Input>
             </FormGroup>
 
-            <Button color="primary" onClick={handleCreate}>
+            <Button color="secondary" onClick={handleCreate}>
                 Create
             </Button>
-            <Button color="danger">Reset</Button>
+            <Button color="info">Reset</Button>
         </>
     );
 }

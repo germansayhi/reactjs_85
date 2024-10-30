@@ -4,6 +4,8 @@ import ResultFormItem from "./ResultFormItem";
 
 function ResultForm(props) {
     let { listAccount } = props;
+    let { onHandleUpdate } = props
+
     return (
         <>
             <br />
@@ -24,7 +26,9 @@ function ResultForm(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    <ResultFormItem listAccount={listAccount} />
+                    <ResultFormItem listAccount={listAccount}
+                        onHandleUpdate={onHandleUpdate}
+                    />
 
                 </tbody>
             </Table>

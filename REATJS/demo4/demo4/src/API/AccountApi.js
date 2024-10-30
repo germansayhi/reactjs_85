@@ -7,4 +7,7 @@ let getListAccountApi = () => {
 let addNewAccountApi = (accountParam) => {
     return api("POST", "accounts", accountParam);
 };
-export { getListAccountApi, addNewAccountApi };
+let UpdateAccountApi = (accountParam) => {
+    return api("UPDATE", "accounts", accountParam);
+};
+export { getListAccountApi, addNewAccountApi, UpdateAccountApi };
