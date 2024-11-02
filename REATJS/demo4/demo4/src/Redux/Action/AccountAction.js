@@ -1,5 +1,6 @@
-import { getListAccountApi, addNewAccountApi } from "../../API/AccountApi";
+import { getListAccountApi, addNewAccountApi, deleteAccountApi, updateAccountApi } from "../../API/AccountApi";
 import { FETCH_ACCOUNT_LIST } from "../Contant/AccountActionType";
+import { DELETE_ACCOUNT } from "../Contant/DeleteActionType";
 
 
 // Viết các Action liên quan đến Call API
@@ -26,10 +27,32 @@ export const actionAddAccountAPI = (AccountNew) => {
             // Sau khi thêm mới thành công thực hiện dispatch actionFetchListAccountAPI
             // để load lại danh sách Account cập nhật
             dispatch(actionFetchListAccountAPI());
-
-
-            // Trong TH Backend trả về thông tin Account vừa tạo mới có thể xử lý theo hướng add Account
-            // vừa tạo mới vào listAccount Redux ==> sẽ k cần call API lần nữa
         });
     };
 };
+
+export const actionDeleteAccountAPI = (id) => {
+    return (dispatch) => {
+        return deleteAccountApi(id).then((response) => {
+            // console.log("response sau khi xóa Account: ", response);
+            dispatch(actionDeleteAccountRedux(id));
+        });
+    };
+};
+
+
+export const actionDeleteAccountRedux = (idDelete) => {
+    return {
+        type: DELETE_ACCOUNT,
+        payload: idDelete,
+    };
+};
+
+export const actionUpdateAccountAPI = (accountUpdate_API) => {
+    return (dispatch) => {
+        return updateAccountApi(accountUpdate_API).then((response) => {
+            // console.log("response sau khi xóa Account: ", response);
+        });
+    };
+};
+

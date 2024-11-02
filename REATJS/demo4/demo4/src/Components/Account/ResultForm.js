@@ -3,8 +3,8 @@ import { Table } from "reactstrap";
 import ResultFormItem from "./ResultFormItem";
 
 function ResultForm(props) {
-    let { listAccount } = props;
-    let { onHandleUpdate } = props
+    let { listAccount, onHandleDelete, onHandleEdit } = props;
+
 
     return (
         <>
@@ -26,8 +26,10 @@ function ResultForm(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    <ResultFormItem listAccount={listAccount}
-                        onHandleUpdate={onHandleUpdate}
+                    <ResultFormItem
+                        listAccount={listAccount}
+                        onHandleDelete={onHandleDelete}
+                        onHandleEdit={onHandleEdit}
                     />
 
                 </tbody>
